@@ -1,8 +1,3 @@
-//Modules needed: Advanced Macros, Dynamic Active Effects, ItemMacro, and Warpgate
-//Create an Active effect on the item that you want to add this. Set the Active Effect to: 
-//Attribute Key: macro.itemMacro, Change Mode: Custom, Effect Value: @item
-//Paste this code into the ItemMacro code section
-
 //Data from Args
 const actorID = game.actors.get(args[0].actor._id); // Gets actor ID
 const tokenID = canvas.tokens.get(args[0].tokenId); // Gets Token ID
