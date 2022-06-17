@@ -132,7 +132,7 @@ const updates = {
 
 if(args[0] === "on") {
 	await warpgate.mutate(token.document, updates);
-	ui.notifications.notify("Something has appeared in your character sheet") // Edit this to notify
+	ui.notifications.notify("Something has appeared in your character sheet"); // Edit this to what you want it to say
 }
 else if(args[0] === "off") {
 	await warpgate.revert(token.document);
