@@ -5,7 +5,7 @@ const updates = {
 	embedded: {
 		Item: {
 			"ItemName": { //String
-				type: "feat", // feat, spell
+				type: "ItemType", // feat, spell, weapon
 				img: "ImagePath", //Example: "icons/magic/holy/projectiles-blades-salvo-yellow.webp"
 				data: {
 					description: {
@@ -52,7 +52,7 @@ const updates = {
 					},
 					damage: {
 						parts: [
-						["DamageFormula", "DamageType"] // ["Formula: this can be '${level}d8' (include the backticks) to use the spell level", "acid, bludgeoning, cold, fire, force, lightning, necrotic, piercing, poison, psychic, radiant, slashing, thunder, healing, temphp"]
+						["DamageFormula", "DamageType"] // ["Formula: this can be like '${level}d8' (include the backticks) to use the spell level", "acid, bludgeoning, cold, fire, force, lightning, necrotic, piercing, poison, psychic, radiant, slashing, thunder, healing, temphp"]
 						],
 						versatile: "" // Formula
 					},
@@ -93,8 +93,37 @@ const updates = {
 						formula: "" // Formula
 					},
 					//End of spell section
-					// Active Effects
-					effects: [],
+					//Weapon section
+					rarity: "common", // common, uncommon, rare, veryRare, legendary, artifact
+					weaponType: "simpleM", // simpleM, simpleR, martialM, martialR, natural, improv, siege
+					baseItem: "club", // club, dagger, greatclub, handaxe, javelin, lighthammer, mace, quarterstaff, sickle, spear, dart, lightcrossbow, shortbow, sling, battleaxe, flail, glaive, greataxe, greatsword, halberd, lance, longsword, maul, morningstar, pike, rapier, scimitar, shortsword, trident, warpick, warhammer, whip, blowgun, handcrossbow, heavycrossbow, longbow, net
+					quantity: 1, // Numeric
+					weight: 0, // Numeric
+					price: "0", // String
+					attunement: 0, // 0 = Attunement not Required, 1 = Attunement Required, 2 = Attuned
+					proficient: true, // true, false
+					equipped: true, // true, false
+					identified: true, // true, false
+					properties: {
+						ada: false, // Adamantine: true, false
+						amm: false, // Ammunition: true, false
+						fin: false, // Finesse: true, false
+						fir: false, // Firearm: true, false
+						foc: false, // Focus: true, false
+						hvy: false, // Heavy: true, false
+						lgt: false, // Light: true, false
+						lod: false, // Loading: true, false
+						mgc: false, // Magical: true, false
+						rch: false, // Reach: true, false
+						rel: false, // Reload: true, false
+						ret: false, // Returning: true, false
+						sil: false, // Silvered: true, false
+						spc: false, // Special: true, false
+						thr: false, // Thrown: true, false
+						two: false, // Two-Handed: true, false
+						ver: false // Veratile: true, false
+					},
+					//End of weapon section
 				}
 			}
 		}
