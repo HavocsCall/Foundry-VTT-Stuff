@@ -1,12 +1,11 @@
 //Data from Args
-const actorID = game.actors.get(args[0].actor._id); // Gets actor ID
-const tokenID = canvas.tokens.get(args[0].tokenId); // Gets Token ID
+const actorID = args[1]; // Gets actor ID
+const tokenID = args[2]; // Gets Token ID
 const summonerDC = actorID.data.data.attributes.spelldc;
 const summonerAttack = summonerDC - 8;
 const summonerMod = getProperty(tokenID.actor, `data.data.abilities.${getProperty(tokenID.actor, 'data.data.attributes.spellcasting')}.mod`);
 
-//Set amount of dice here
-const level = args[0].spellLevel - 1; // Spell level + or - amount to equal dice
+const level = args[3] - 1 //Gets spell level and + or - to equal amount of dice
 
 //Warpgate Variables
 const summonType = "Spiritual Weapon";
@@ -50,14 +49,12 @@ const updates = {
 		}
 	}
 };
-const callbacks = "";
+const callbacks = {};
 const options = {controllingActor: actor};
-
-//warpgate.spawn(summonType, updates, callbacks, options);
 
 if(args[0] === "on") {
 	await warpgate.spawn(summonType, updates, callbacks, options);
-	}
+}
 else if(args[0] === "off") {
-    await warpgate.dismiss(summonType);
-	}
+	await warpgate.dismiss(summonType);
+}
