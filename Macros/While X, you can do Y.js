@@ -6,12 +6,12 @@ const updates = {
 		Item: {
 			"ItemName": { //String
 				type: "ItemType", // feat, spell, weapon
-				img: "ImagePath", //Example: "icons/magic/holy/projectiles-blades-salvo-yellow.webp"
+				img: "ImagePath", // Example: "icons/magic/holy/projectiles-blades-salvo-yellow.webp"
 				data: {
 					description: {
-						value: "ItemDescription", //String
+						value: "ItemDescription", // String
 					},
-					source: "", //String
+					source: "", // String
 					activation: {
 						type: "", // action, bonus, crew, day, hour, lair, legendary, minute, none, reaction, special, reactiondamage, reactionmanual
 						cost: null, // Numeric
@@ -131,8 +131,9 @@ const updates = {
 };
 
 if(args[0] === "on") {
-  await warpgate.mutate(token.document, updates);
+	await warpgate.mutate(token.document, updates);
+	ui.notifications.notify("Something has appeared in your character sheet") // Edit this to notify
 }
 else if(args[0] === "off") {
-  await warpgate.revert(token.document);
+	await warpgate.revert(token.document);
 }
