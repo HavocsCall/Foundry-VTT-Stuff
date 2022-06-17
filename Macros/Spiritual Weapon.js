@@ -43,7 +43,7 @@ const updates = {
 					attackBonus: `- @mod - @prof + ${spellAttack}`, // Formula
 					damage: {
 						parts: [
-						[`${dice}d8 + ${spellMod}`, "force"] // ["Formula: this can be like '${dice}d8' (include the backticks) to use the spell level", "acid, bludgeoning, cold, fire, force, lightning, necrotic, piercing, poison, psychic, radiant, slashing, thunder, healing, temphp"]
+						[`${dice}d8 + ${spellMod}`, "force"] // ["Formula: this can be like '${dice}d8' (include the backticks) to use the spell scaling", "acid, bludgeoning, cold, fire, force, lightning, necrotic, piercing, poison, psychic, radiant, slashing, thunder, healing, temphp"]
 						],
 					},
 				}
@@ -58,5 +58,5 @@ if(args[0] === "on") {
 	await warpgate.spawn(summonType, updates, callbacks, options);
 }
 else if(args[0] === "off") {
-    await warpgate.dismiss(); //Still have to figure this one out
+	await warpgate.dismiss(); //Still have to figure this one out
 }
