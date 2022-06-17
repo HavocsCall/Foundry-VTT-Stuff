@@ -1,4 +1,4 @@
-const level = args[1] + 0 //Gets spell level and + or - to equal amount of dice. This might need extra math depending on the spell.
+const level = args[1] + 0; //Gets spell level and + or - to equal amount of dice. This might need extra math depending on the spell.
 
 //Updates to Token DELETE ANY UNNEEDED SECTIONS
 const updates = {
