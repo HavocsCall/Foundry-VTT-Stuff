@@ -7,7 +7,7 @@ const tokenID = args[2].tokenId; // Gets casting token's ID
 const tokenName = canvas.tokens.get(tokenID).data.name; // Gets casting token's name
 
 //Set amount of dice here
-const level = args[1]; // Gets spell level and allows for any math related to spell level to dice conversion
+const dice = args[1]; // Gets spell level and allows for any math related to spell level to dice conversion
 
 //Warpgate Variables
 const summonType = "NameOfActor"; // Make this the same as the name of the actor
