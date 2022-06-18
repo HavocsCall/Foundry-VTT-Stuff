@@ -1,10 +1,10 @@
-const level = args[1] + 0; //Gets spell level and + or - to equal amount of dice. This might need extra math depending on the spell.
+//Set amount of dice here
+const level = args[1]; // Gets spell level and allows for any math related to spell level to dice conversion
 
-//Updates to Token DELETE ANY UNNEEDED SECTIONS
-const updates = {
+const updates = { // Updates to token while effect is active
 	embedded: {
-		Item: {
-			"ItemName": { //String
+		Item: { // Define the item that you want in the caster's inventory
+			"ItemName": { // String
 				type: "ItemType", // feat, spell, weapon
 				img: "ImagePath", // Example: "icons/magic/holy/projectiles-blades-salvo-yellow.webp"
 				data: {
@@ -68,7 +68,7 @@ const updates = {
 						charged: false // true, false
 					},
 					//Spell section
-					level: 1, // Numeric 1-9
+					level: 1, // Numeric 0-9, 0 = cantrip
 					school: "abj", // abj, con, div, enc, evo, ill, nec, trs
 					components: {
 						value: "", // String
