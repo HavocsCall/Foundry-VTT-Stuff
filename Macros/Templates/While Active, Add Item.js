@@ -1,5 +1,5 @@
 //Set amount of dice here
-const level = args[1]; // Gets spell level and allows for any math related to spell level to dice conversion
+const dice = args[1]; // Gets spell level and allows for any math related to spell level to dice conversion
 
 const updates = { // Updates to token while effect is active
 	embedded: {
