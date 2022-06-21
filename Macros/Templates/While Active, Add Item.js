@@ -52,7 +52,7 @@ const updates = { // Updates to token while effect is active
 					},
 					damage: {
 						parts: [
-						["DamageFormula", "DamageType"] // ["Formula: this can be like '${level}d8' (include the backticks) to use the spell level", "acid, bludgeoning, cold, fire, force, lightning, necrotic, piercing, poison, psychic, radiant, slashing, thunder, healing, temphp"]
+						["DamageFormula", "DamageType"] // ["Formula: this can be like '${dice}d8' (include the backticks) to use the spell level", "acid, bludgeoning, cold, fire, force, lightning, necrotic, piercing, poison, psychic, radiant, slashing, thunder, healing, temphp"]
 						],
 						versatile: "" // Formula
 					},
