@@ -1,3 +1,5 @@
+const tokenDoc = canvas.scene.tokens.get(args[args.length - 1].tokenId); //Gets Token document
+
 //Set amount of dice here
 const dice = args[1]; // Gets spell level and allows for any math related to spell level to dice conversion
 
@@ -131,9 +133,9 @@ const updates = { // Updates to token while effect is active
 };
 
 if(args[0] === "on") {
-	await warpgate.mutate(token.document, updates);
+	await warpgate.mutate(tokenDoc, updates);
 	ui.notifications.notify("Something has appeared in your character sheet"); // Edit this to what you want it to say
 }
 else if(args[0] === "off") {
-	await warpgate.revert(token.document);
+	await warpgate.revert(tokenDoc);
 }
