@@ -1,10 +1,10 @@
 const actorID = args[2].actorId; // Gets casting actor's ID
 const spellDC = game.actors.get(actorID).data.data.attributes.spelldc; // Gets casting actor's spell DC
-const spellAttack = spellDC - 8; // Gets casting actor's spell attack
+const spellAttack = spellDC - 8; // Calculates actor's spell attack
 const spellAbility = game.actors.get(actorID).data.data.attributes.spellcasting; // Gets casting actor's spellcasting ability
 const spellMod = game.actors.get(actorID).data.data.abilities[spellAbility].mod; // Gets casting actor's spellcasting ability mod
-const tokenID = args[2].tokenId; // Gets casting token's ID
-const tokenName = canvas.tokens.get(tokenID).data.name; // Gets casting token's name
+const tokenDoc = canvas.scene.tokens.get(args[args.length - 1].tokenId); //Gets Token document
+const tokenName = tokenDoc.data.name; // Gets casting token's name
 
 //Set amount of dice here
 const dice = args[1]; // Gets spell level and allows for any math related to spell level to dice conversion
