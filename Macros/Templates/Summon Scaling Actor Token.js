@@ -1,25 +1,165 @@
-const actorID = args[2].actorId; // Gets casting actor's ID
-const spellDC = game.actors.get(actorID).data.data.attributes.spelldc; // Gets casting actor's spell DC
+const actorDoc = game.actors.get(args[args.length - 1].actorId); // Gets casting actor's document
+const spellDC = actorDoc.data.data.attributes.spelldc; // Gets casting actor's spell DC
 const spellAttack = spellDC - 8; // Calculates actor's spell attack
-const spellAbility = game.actors.get(actorID).data.data.attributes.spellcasting; // Gets casting actor's spellcasting ability
-const spellMod = game.actors.get(actorID).data.data.abilities[spellAbility].mod; // Gets casting actor's spellcasting ability mod
+const spellAbility = actorDoc.data.data.attributes.spellcasting; // Gets casting actor's spellcasting ability
+const spellMod = actorDoc.data.data.abilities[spellAbility].mod; // Gets casting actor's spellcasting ability mod
 const tokenDoc = canvas.scene.tokens.get(args[args.length - 1].tokenId); //Gets Token document
 const tokenName = tokenDoc.data.name; // Gets casting token's name
+const level = args[1]; // Gets spell level
 
 //Set amount of dice here
-const dice = args[1]; // Gets spell level and allows for any math related to spell level to dice conversion
+const dice = level; // Allows for any math related to spell level to dice conversion
 
 //Warpgate Variables
-const summonType = "NameOfActor"; // Make this the same as the name of the actor
-const updates = { // Updates to token on summon
-	actor: { // Need to get the rest of the usual fields for actor
-		name:`${summonType} of ${tokenName}`, // Change the name of the token's actor
+const summonType = "NameOfActor"; // Make this the same as the name of the actor in your sidebar
+const updates = { // Updates to token/actor
+	actor: { // Updates to the token's actor
+		name: "ActorName", // Change the name of the token's actor
+		img: "ImagePath", // Example: "icons/magic/holy/projectiles-blades-salvo-yellow.webp"
+		data: {
+			abilities: {
+				str: { // Strength
+					value: 10, // Numeric
+					proficient: 0, // 0 = No, 1 = Yes
+					bonuses: {
+						check: "", // Formula
+						save: "" // Formula
+					}
+				},
+				dex: { // Dexterity
+					value: 10, // Numeric
+					proficient: 0, // 0 = No, 1 = Yes
+					bonuses: {
+						check: "", // Formula
+						save: "" // Formula
+					}
+				},
+				con: { // Constitution
+					value: 10, // Numeric
+					proficient: 0, // 0 = No, 1 = Yes
+					bonuses: {
+						check: "", // Formula
+						save: "" // Formula
+					}
+				},
+				int: { // Intelligence
+					value: 10, // Numeric
+					proficient: 0, // 0 = No, 1 = Yes
+					bonuses: {
+						check: "", // Formula
+						save: "" // Formula
+					}
+				},
+				wis: { //Wisdom
+					value: 10, // Numeric
+					proficient: 0, // 0 = No, 1 = Yes
+					bonuses: {
+						check: "", // Formula
+						save: "" // Formula
+					}
+				},
+				cha: { // Charisma
+					value: 10, // Numeric
+					proficient: 0, // 0 = No, 1 = Yes
+					bonuses: {
+						check: "", // Formula
+						save: "" // Formula
+					}
+				},
+			},
+			attributes: {
+				ac: {
+					flat: null, // AC if using the Flat or Natural calculation
+					calc: "", // flat, natural, default, mage, draconic, unarmoredMonk, unarmoredBarb, custom
+					formula: "" // Formula if using the Custom Formula calculation
+				},
+				hp: {
+					value: 103, // Numeric
+					min: 0, // Numeric
+					max: 103, // Numeric
+					temp: null, // Numeric
+					tempmax: null // Numeric
+				},
+				movement: {
+					burrow: 0, // Numeric
+					climb: 0, // Numeric
+					fly: 0, // Numeric
+					swim: 0, // Numeric
+					walk: 30, // Numeric
+					units: "", // ft, mi, m, km
+				},
+				senses: {
+					darkvision: 0, // Numeric
+					blindsight: 0, // Numeric
+					tremorsense: 0, // Numeric
+					truesight: 0, // Numeric
+					units: "ft", // ft, mi, m, km
+					special: "" // String separated by semicolons
+				}
+			},
+			traits: {
+				size: "", // tiny, sm, med, lg, huge, grg
+				di: { // Damage Immunity
+					value: [
+						"",// Each damage type is in quotes separated by commas: "acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "physical", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"
+					], 
+					custom: "" // String seperated by semicolons
+				},
+				dr: { // Damage Resistance
+					value: [
+						"",// Each damage type is in quotes separated by commas: "acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "physical", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"
+					],
+					custom: "" // String seperated by semicolons
+				},
+				dv: { // Damage Vulnerability
+					value: [
+						"",// Each damage type is in quotes separated by commas: "acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "physical", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"
+					],
+					custom: "" // String seperated by semicolons
+					},
+				ci: { // Condition Immunities
+					value: [ 
+						"", // Each condition is in quotes separated by commas: "blinded", "charmed", "deafened", "diseased", "exhaustion", "frightened", "grappled", "incapacitated", "invisible", "paralyzed", "petrified", "poisoned", "prone", "restrained", "stunned", "unconscious"
+					],
+					custom: "" // String seperated by semicolons
+				},
+			}
+		}
 	},
-	token: { // Need to get the rest of the usual fields for token
-		name:`${summonType} of ${tokenName}`, // Change the name of the token
+	token: { // Updates to the token
+		name: "TokenName", // Change the name of the token
+		img: "ImagePath", // Example: "icons/magic/holy/projectiles-blades-salvo-yellow.webp"
+		width: 1, // Numeric
+		height: 1, // Numeric
+		scale: 1, // Numeric 0.2-3
+		elevation: 0, // Numeric
+		alpha: 1, // Numeric 0-1
+		hidden: false, // true, false
+		dimSight: 0, // Numeric
+		brightSight: 0, // Numeric
+		sightAngle: 0, // Numeric
+		light: {
+			alpha: 0.5, // Numeric 0-1
+			angle: 0, // Numeric 0-360
+			bright: 0, // Numeric
+			coloration: 1,
+			dim: 0,  // Numeric
+			gradual: true, // true, false
+			luminosity: 0.5, // Numeric decimals -1 to 1
+			saturation: 0, // Numeric decimals -1 to 1
+			contrast: 0, // Numeric decimals -1 to 1
+			shadows: 0, // Numeric decimals 0-1
+			animation: {
+				speed: 5, // Numeric decimals 0-10
+				intensity: 5, // Numeric decimals 1-10
+				reverse: false, // true, false
+				type: "" // torch, pulse, chroma, wave, fog, sunburst, dome, emanation, hexa, ghost, energy, roiling, hole, vortex, witchwave, rainbowswirl, radialrainbow, fairy
+			},
+			color: "#000000" // Hex code for color
+    },
 	},
 	embedded: {
-		Item: { // Define the item that you want in the summoned token's inventory
+		Item: { // Update or add an item in the summoned token actor's inventory
 			"ItemName": { // String
 				type: "ItemType", // feat, spell, weapon
 				img: "ImagePath", // Example: "icons/magic/holy/projectiles-blades-salvo-yellow.webp"
@@ -68,7 +208,7 @@ const updates = { // Updates to token on summon
 					},
 					damage: {
 						parts: [
-						["DamageFormula", "DamageType"] // ["Formula: this can be like '${dice}d8' (include the backticks) to use the spell level", "acid, bludgeoning, cold, fire, force, lightning, necrotic, piercing, poison, psychic, radiant, slashing, thunder, healing, temphp"]
+						["DamageFormula", "DamageType"] // ["Formula", "acid, bludgeoning, cold, fire, force, lightning, necrotic, piercing, poison, psychic, radiant, slashing, thunder, healing, temphp"]
 						],
 						versatile: "" // Formula
 					},
@@ -84,7 +224,7 @@ const updates = { // Updates to token on summon
 						charged: false // true, false
 					},
 					//Spell section
-					level: 1, // Numeric 1-9
+					level: 1, // Numeric 0-9, 0 = Cantrip
 					school: "abj", // abj, con, div, enc, evo, ill, nec, trs
 					components: {
 						value: "", // String
